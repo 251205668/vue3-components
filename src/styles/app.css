@@ -1,0 +1,11 @@
+@import url("./test.css");
+
+/* postcss 命名空间式定义变量 */
+:root {
+  --main-font-color: blue;
+}
+
+.root {
+  @console.error error;
+  color: var(--main-font-color);
+}
