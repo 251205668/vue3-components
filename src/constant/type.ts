@@ -7,3 +7,5 @@ export type color =
   | "info"
   | "light"
   | "dark";
+
+export type size = "xs" | "sm" | "md" | "lg" | "xl" | "xxl";

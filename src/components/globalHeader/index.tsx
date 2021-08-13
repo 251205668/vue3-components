@@ -10,6 +10,14 @@ export default defineComponent({
     theme: {
       type: String as PropType<color>,
       default: "primary"
+    },
+    linkText: {
+      type: String,
+      default: "源码地址"
+    },
+    linkHref: {
+      type: String,
+      default: "#"
     }
   },
   setup() {},
@@ -26,7 +34,9 @@ export default defineComponent({
           <a href="#" class="navbar-brand">
             {this.title}
           </a>
-          <button class="btn btn-outline-light my-2 mb-0 mt-0">源码地址</button>
+          <a href={props.linkHref} class="btn btn-outline-light my-2 mb-0 mt-0">
+            {props.linkText}
+          </a>
         </div>
       </nav>
     );

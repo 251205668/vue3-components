@@ -26,7 +26,11 @@ export default defineComponent({
   render() {
     return (
       <div>
-        <global-header title="Vue3组件库" theme="primary"></global-header>
+        <global-header
+          title="Vue3组件库"
+          theme="primary"
+          linkHref="https://github.com/251205668"
+        ></global-header>
         <div class="home-page container-md">
           <h2 class="font-weight-bold text-center mb-4 mt-4">组件库演示实例</h2>
           <div class="row">
@@ -107,6 +111,18 @@ export default defineComponent({
                               <td>primary</td>
                               <td>主题</td>
                             </tr>
+                            <tr>
+                              <th scope="row">linkText</th>
+                              <td>string</td>
+                              <td>源码地址</td>
+                              <td>按钮文案</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">linkHref</th>
+                              <td>string</td>
+                              <td>#</td>
+                              <td>地址</td>
+                            </tr>
                           </tbody>
                         </table>
                       </div>
@@ -142,7 +158,7 @@ export default defineComponent({
                       style={{ display: "block" }}
                     >
                       <div class="card card-body">
-                        <drop-down title="选择城市">
+                        <drop-down title="选择城市" theme="danger" light>
                           <drop-down-item>
                             <a href="#" class="dropdown-item">
                               北京
@@ -158,7 +174,7 @@ export default defineComponent({
                               深圳
                             </a>
                           </drop-down-item>
-                          <drop-down-item disabled>
+                          <drop-down-item disabled={true}>
                             <a href="#" class="dropdown-item">
                               广州
                             </a>
@@ -185,6 +201,24 @@ export default defineComponent({
                               <td>string</td>
                               <td>primary</td>
                               <td>主题</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">size</th>
+                              <td>string</td>
+                              <td>-</td>
+                              <td>可选值有 lg 和 sm</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">light</th>
+                              <td>boolean</td>
+                              <td>false</td>
+                              <td>是否展示outline按钮</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">disabled</th>
+                              <td>boolean</td>
+                              <td>false</td>
+                              <td>dropItem 属性，禁用选项</td>
                             </tr>
                           </tbody>
                         </table>

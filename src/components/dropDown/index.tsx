@@ -1,4 +1,6 @@
-import useClickOutSilde from "@/Hooks/useClickMouseOutSide";
+import { color, size } from "@/constant/type";
+import useClickOutSide from "@/Hooks/useClickMouseOutSide";
+import { PropType } from "vue";
 import { defineComponent, ref, watch } from "vue";
 
 export default defineComponent({
@@ -6,7 +8,20 @@ export default defineComponent({
   props: {
     title: {
       type: String,
-      default: "下拉菜单标题"
+      default: "标题",
+      require: true
+    },
+    theme: {
+      type: String as PropType<color>,
+      default: "primary"
+    },
+    size: {
+      type: String as PropType<size>,
+      default: ""
+    },
+    light: {
+      type: Boolean,
+      default: false
     }
   },
   setup(props, { slots }) {
@@ -19,8 +34,7 @@ export default defineComponent({
     };
 
     // 是否点击外部区域
-    const isClickOutSide = useClickOutSilde(dropdownRef);
-    console.log(isClickOutSide.value);
+    const isClickOutSide = useClickOutSide(dropdownRef);
 
     // 点击外部区域关闭dropdown
     watch(isClickOutSide, () => {
@@ -29,16 +43,21 @@ export default defineComponent({
       }
     });
     return () => (
-      <div class="dropdown" ref="dropdownRef">
+      <div class="dropdown" ref={dropdownRef}>
         <div
-          class="btn btn-outline-primary my-2 dropdown-toggle"
+          class={[
+            "btn my-2 dropdown-toggle",
+            `btn${props.light ? "-outline" : ""}-${props.theme} btn-${
+              props.size
+            }`
+          ]}
           onClick={e => {
             toggleOpen();
           }}
         >
           {props.title}
         </div>
-        {isOpen && (
+        {isOpen.value && (
           <ul class="dropdown-menu" style={{ display: "block" }}>
             {slots.default()}
           </ul>

@@ -1,4 +1,5 @@
 import { defineComponent } from "vue";
+import "./index.scss";
 
 export default defineComponent({
   name: "dropDownItem",
@@ -10,7 +11,7 @@ export default defineComponent({
   },
   setup(props, { slots }) {
     return () => (
-      <li class={["dropdown-option", "disabled" && props.disabled]}>
+      <li class={["dropdown-option", props.disabled ? "disabled" : ""]}>
         {slots.default()}
       </li>
     );
